@@ -26,8 +26,8 @@ export const tool: Tool = {
   },
 };
 
-export const handler = (client: SSs, args: any) => {
-  const { schemaType, ...body } = args;
+export const handler = (client: SSs, args: Record<string, unknown> | undefined) => {
+  const { schemaType, ...body } = args as any;
   return client.api.v1.sites.schemeFeatures.checkEnabled(schemaType, body);
 };
 

@@ -29,8 +29,8 @@ export const tool: Tool = {
   },
 };
 
-export const handler = (client: SSs, args: any) => {
-  const { broker, ...body } = args;
+export const handler = (client: SSs, args: Record<string, unknown> | undefined) => {
+  const { broker, ...body } = args as any;
   return client.api.v1.sites.features.retrieveBrokerFeature(broker, body);
 };
 

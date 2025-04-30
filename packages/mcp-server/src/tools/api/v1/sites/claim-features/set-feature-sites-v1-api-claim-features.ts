@@ -64,8 +64,8 @@ export const tool: Tool = {
   },
 };
 
-export const handler = (client: SSs, args: any) => {
-  const { featureName, ...body } = args;
+export const handler = (client: SSs, args: Record<string, unknown> | undefined) => {
+  const { featureName, ...body } = args as any;
   return client.api.v1.sites.claimFeatures.setFeature(featureName, body);
 };
 
