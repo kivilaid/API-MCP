@@ -19,8 +19,7 @@ export const tool: Tool = {
   },
 };
 
-export const handler = (client: SSs, args: any) => {
-  const {} = args;
+export const handler = (client: SSs, args: Record<string, unknown> | undefined) => {
   return client.api.v1.sites.listExcelCalculators();
 };
 

@@ -29,8 +29,8 @@ export const tool: Tool = {
   },
 };
 
-export const handler = (client: SSs, args: any) => {
-  const { type, ...body } = args;
+export const handler = (client: SSs, args: Record<string, unknown> | undefined) => {
+  const { type, ...body } = args as any;
   return client.api.v1.sites.schemes.configurations.listByType(type, body);
 };
 
