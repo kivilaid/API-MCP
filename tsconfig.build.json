@@ -6,7 +6,7 @@
     "rootDir": "./dist/src",
     "paths": {
       "sss/*": ["dist/src/*"],
-      "sss": ["dist/src/index.ts"],
+      "sss": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
