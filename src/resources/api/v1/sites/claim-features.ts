@@ -9,6 +9,12 @@ export class ClaimFeatures extends APIResource {
   /**
    * Get tenant claim features - internal purposes only, used by deploy automation
    * tool
+   *
+   * @example
+   * ```ts
+   * const claimFeatures =
+   *   await client.api.v1.sites.claimFeatures.list('tenantTag');
+   * ```
    */
   list(tenantTag: string, options?: RequestOptions): APIPromise<ClaimFeatureListResponse> {
     return this._client.get(path`/api/v1/sites/claim-features/${tenantTag}`, options);
@@ -16,6 +22,15 @@ export class ClaimFeatures extends APIResource {
 
   /**
    * Get claim feature
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.claimFeatures.retrieveFeature(
+   *     'featureName',
+   *     { tenantTag: 'tenantTag', schemaName: 'schemaName' },
+   *   );
+   * ```
    */
   retrieveFeature(
     featureName: string,
@@ -31,6 +46,15 @@ export class ClaimFeatures extends APIResource {
 
   /**
    * Save claim features - internal purposes only, used by deploy automation tool
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.claimFeatures.save(
+   *     'schemaName',
+   *     { tenantTag: 'tenantTag' },
+   *   );
+   * ```
    */
   save(
     schemaName: string,
@@ -46,6 +70,15 @@ export class ClaimFeatures extends APIResource {
 
   /**
    * Set claim feature
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.claimFeatures.setFeature(
+   *     'featureName',
+   *     { tenantTag: 'tenantTag', schemaName: 'schemaName' },
+   *   );
+   * ```
    */
   setFeature(
     featureName: string,

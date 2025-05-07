@@ -20,6 +20,15 @@ export class Configurations extends APIResource {
 
   /**
    * Create a scheme
+   *
+   * @example
+   * ```ts
+   * const configuration =
+   *   await client.api.v1.sites.schemes.configurations.create(
+   *     'name',
+   *     { tenantTag: 'tenantTag', type: 'type', body: '{}' },
+   *   );
+   * ```
    */
   create(
     name: string,
@@ -35,6 +44,14 @@ export class Configurations extends APIResource {
 
   /**
    * Get schemes list of latest version
+   *
+   * @example
+   * ```ts
+   * const resourceSchemes =
+   *   await client.api.v1.sites.schemes.configurations.list(
+   *     'tenantTag',
+   *   );
+   * ```
    */
   list(
     tenantTag: string,
@@ -46,6 +63,15 @@ export class Configurations extends APIResource {
 
   /**
    * Get schemes list of latest version by type
+   *
+   * @example
+   * ```ts
+   * const resourceSchemes =
+   *   await client.api.v1.sites.schemes.configurations.listByType(
+   *     'type',
+   *     { tenantTag: 'tenantTag' },
+   *   );
+   * ```
    */
   listByType(
     type: string,
@@ -61,6 +87,15 @@ export class Configurations extends APIResource {
 
   /**
    * Get JSON scheme by version
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemes.configurations.retrieveByVersion(
+   *     'version',
+   *     { tenantTag: 'tenantTag', type: 'type', name: 'name' },
+   *   );
+   * ```
    */
   retrieveByVersion(
     version: string,
@@ -76,6 +111,15 @@ export class Configurations extends APIResource {
 
   /**
    * Get latest version JSON scheme
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemes.configurations.retrieveLatest(
+   *     'name',
+   *     { tenantTag: 'tenantTag', type: 'type' },
+   *   );
+   * ```
    */
   retrieveLatest(
     name: string,

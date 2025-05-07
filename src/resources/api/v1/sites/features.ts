@@ -8,6 +8,13 @@ import { path } from '../../../../internal/utils/path';
 export class Features extends APIResource {
   /**
    * Update tenant features
+   *
+   * @example
+   * ```ts
+   * const feature = await client.api.v1.sites.features.update(
+   *   'tenantTag',
+   * );
+   * ```
    */
   update(
     tenantTag: string,
@@ -20,6 +27,13 @@ export class Features extends APIResource {
 
   /**
    * Get tenant features
+   *
+   * @example
+   * ```ts
+   * const features = await client.api.v1.sites.features.list(
+   *   'tenantTag',
+   * );
+   * ```
    */
   list(tenantTag: string, options?: RequestOptions): APIPromise<unknown> {
     return this._client.get(path`/api/v1/sites/features/${tenantTag}`, options);
@@ -27,6 +41,15 @@ export class Features extends APIResource {
 
   /**
    * If no auth token provided only publicly available features can be shown
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.features.retrieveBrokerFeature(
+   *     'broker',
+   *     { tenantTag: 'tenantTag', featureName: 'featureName' },
+   *   );
+   * ```
    */
   retrieveBrokerFeature(
     broker: string,
@@ -39,6 +62,15 @@ export class Features extends APIResource {
 
   /**
    * If no auth token provided only publicly available features can be shown
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.features.retrieveFeature(
+   *     'featureName',
+   *     { tenantTag: 'tenantTag' },
+   *   );
+   * ```
    */
   retrieveFeature(
     featureName: string,

@@ -9,6 +9,14 @@ import { path } from '../../../../internal/utils/path';
 export class Products extends APIResource {
   /**
    * Creates stubs for product schemas, schema features and product features
+   *
+   * @example
+   * ```ts
+   * await client.api.v1.sites.products.create('tenantTag', {
+   *   name: 'product-name',
+   *   title: 'Product Title',
+   * });
+   * ```
    */
   create(tenantTag: string, body: ProductCreateParams, options?: RequestOptions): APIPromise<void> {
     return this._client.post(path`/api/v1/sites/products/${tenantTag}`, {
@@ -21,6 +29,14 @@ export class Products extends APIResource {
   /**
    * Copies existing product schemas, scheme features and product features to a new
    * product
+   *
+   * @example
+   * ```ts
+   * await client.api.v1.sites.products.copy('tenantTag', {
+   *   source: 'old-product',
+   *   target: { name: 'new-product', title: 'New Product' },
+   * });
+   * ```
    */
   copy(tenantTag: string, body: ProductCopyParams, options?: RequestOptions): APIPromise<void> {
     return this._client.post(path`/api/v1/sites/products/${tenantTag}/copy`, {

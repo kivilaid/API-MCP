@@ -83,6 +83,12 @@ export class Sites extends APIResource {
 
   /**
    * Get list of excel calculators
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.listExcelCalculators();
+   * ```
    */
   listExcelCalculators(options?: RequestOptions): APIPromise<unknown> {
     return this._client.get('/api/v1/sites/preload-excel-calc-api', options);

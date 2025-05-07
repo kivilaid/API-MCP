@@ -9,6 +9,14 @@ export class SchemeFeatures extends APIResource {
   /**
    * Get tenant scheme features - internal purposes only, used by deploy automation
    * tool
+   *
+   * @example
+   * ```ts
+   * const schemeFeatures =
+   *   await client.api.v1.sites.schemeFeatures.list(
+   *     'tenantTag',
+   *   );
+   * ```
    */
   list(tenantTag: string, options?: RequestOptions): APIPromise<SchemeFeatureListResponse> {
     return this._client.get(path`/api/v1/sites/scheme-features/${tenantTag}`, options);
@@ -16,6 +24,15 @@ export class SchemeFeatures extends APIResource {
 
   /**
    * Check which features are enabled schema type
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemeFeatures.checkEnabled(
+   *     'schemaType',
+   *     { tenantTag: 'tenantTag' },
+   *   );
+   * ```
    */
   checkEnabled(
     schemaType: string,
@@ -28,6 +45,19 @@ export class SchemeFeatures extends APIResource {
 
   /**
    * Get scheme feature
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemeFeatures.retrieveFeature(
+   *     'featureName',
+   *     {
+   *       tenantTag: 'tenantTag',
+   *       schemaType: 'schemaType',
+   *       schemaName: 'schemaName',
+   *     },
+   *   );
+   * ```
    */
   retrieveFeature(
     featureName: string,
@@ -43,6 +73,15 @@ export class SchemeFeatures extends APIResource {
 
   /**
    * Save scheme features - internal purposes only, used by deploy automation tool
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemeFeatures.save(
+   *     'schemaName',
+   *     { tenantTag: 'tenantTag', schemaType: 'schemaType' },
+   *   );
+   * ```
    */
   save(
     schemaName: string,
@@ -58,6 +97,19 @@ export class SchemeFeatures extends APIResource {
 
   /**
    * Set scheme feature
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemeFeatures.setFeature(
+   *     'featureName',
+   *     {
+   *       tenantTag: 'tenantTag',
+   *       schemaType: 'schemaType',
+   *       schemaName: 'schemaName',
+   *     },
+   *   );
+   * ```
    */
   setFeature(
     featureName: string,
