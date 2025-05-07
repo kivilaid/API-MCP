@@ -8,6 +8,14 @@ import { path } from '../../../../internal/utils/path';
 export class Public extends APIResource {
   /**
    * Get tenant public features
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.public.listFeatures(
+   *     'tenantTag',
+   *   );
+   * ```
    */
   listFeatures(tenantTag: string, options?: RequestOptions): APIPromise<unknown> {
     return this._client.get(path`/api/v1/sites/public/features/${tenantTag}`, options);

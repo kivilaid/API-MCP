@@ -25,6 +25,15 @@ export class Schemes extends APIResource {
 
   /**
    * Get latest scheme version
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemes.retrieveLatestVersion(
+   *     'name',
+   *     { tenantTag: 'tenantTag', type: 'type' },
+   *   );
+   * ```
    */
   retrieveLatestVersion(
     name: string,

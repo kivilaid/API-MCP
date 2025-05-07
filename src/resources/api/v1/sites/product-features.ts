@@ -8,6 +8,14 @@ import { path } from '../../../../internal/utils/path';
 export class ProductFeatures extends APIResource {
   /**
    * Get tenant product features
+   *
+   * @example
+   * ```ts
+   * const productFeatures =
+   *   await client.api.v1.sites.productFeatures.list(
+   *     'tenantTag',
+   *   );
+   * ```
    */
   list(tenantTag: string, options?: RequestOptions): APIPromise<unknown> {
     return this._client.get(path`/api/v1/sites/product-features/${tenantTag}`, options);
@@ -15,6 +23,15 @@ export class ProductFeatures extends APIResource {
 
   /**
    * Get tenant product features for specific product
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.productFeatures.listBySchema(
+   *     'schemaName',
+   *     { tenantTag: 'tenantTag' },
+   *   );
+   * ```
    */
   listBySchema(
     schemaName: string,
@@ -27,6 +44,14 @@ export class ProductFeatures extends APIResource {
 
   /**
    * Get list of configured tenant products
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.productFeatures.listConfiguredProducts(
+   *     'tenantTag',
+   *   );
+   * ```
    */
   listConfiguredProducts(tenantTag: string, options?: RequestOptions): APIPromise<unknown> {
     return this._client.get(path`/api/v1/sites/product-features/${tenantTag}/products-list`, options);
@@ -34,6 +59,15 @@ export class ProductFeatures extends APIResource {
 
   /**
    * Get specific product feature
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.productFeatures.retrieveFeature(
+   *     'featureName',
+   *     { tenantTag: 'tenantTag', schemaName: 'schemaName' },
+   *   );
+   * ```
    */
   retrieveFeature(
     featureName: string,
@@ -49,6 +83,15 @@ export class ProductFeatures extends APIResource {
 
   /**
    * Set tenant product features
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.productFeatures.set(
+   *     'schemaName',
+   *     { tenantTag: 'tenantTag' },
+   *   );
+   * ```
    */
   set(schemaName: string, params: ProductFeatureSetParams, options?: RequestOptions): APIPromise<unknown> {
     const { tenantTag, body } = params;
@@ -60,6 +103,15 @@ export class ProductFeatures extends APIResource {
 
   /**
    * Update specific product feature
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.productFeatures.updateFeature(
+   *     'featureName',
+   *     { tenantTag: 'tenantTag', schemaName: 'schemaName' },
+   *   );
+   * ```
    */
   updateFeature(
     featureName: string,

@@ -8,6 +8,20 @@ import { path } from '../../../../../../internal/utils/path';
 export class Ui extends APIResource {
   /**
    * Update UI scheme
+   *
+   * @example
+   * ```ts
+   * const ui =
+   *   await client.api.v1.sites.schemes.configurations.ui.update(
+   *     'version',
+   *     {
+   *       tenantTag: 'tenantTag',
+   *       type: 'type',
+   *       name: 'name',
+   *       body: '{}',
+   *     },
+   *   );
+   * ```
    */
   update(version: string, params: UiUpdateParams, options?: RequestOptions): APIPromise<unknown> {
     const { tenantTag, type, name, body } = params;
@@ -19,6 +33,15 @@ export class Ui extends APIResource {
 
   /**
    * Get UI scheme by version
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemes.configurations.ui.retrieveByVersion(
+   *     'version',
+   *     { tenantTag: 'tenantTag', type: 'type', name: 'name' },
+   *   );
+   * ```
    */
   retrieveByVersion(
     version: string,
@@ -34,6 +57,15 @@ export class Ui extends APIResource {
 
   /**
    * Get latest version UI scheme
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.api.v1.sites.schemes.configurations.ui.retrieveLatest(
+   *     'name',
+   *     { tenantTag: 'tenantTag', type: 'type' },
+   *   );
+   * ```
    */
   retrieveLatest(
     name: string,
