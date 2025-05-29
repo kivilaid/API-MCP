@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   resource: 'api.v1.sites',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/api/v1/sites/preload-excel-calc-api',
+  operationId: '5e2d3eb7a159dd1e28db6363300aa80b',
 };
 
 export const tool: Tool = {

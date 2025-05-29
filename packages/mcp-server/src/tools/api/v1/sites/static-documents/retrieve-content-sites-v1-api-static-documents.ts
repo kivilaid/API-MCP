@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   resource: 'api.v1.sites.static_documents',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/api/v1/sites/static-documents/{tenantTag}/{path}',
+  operationId: 'dc6faf5b0dd398deb6344ae3ad214a29',
 };
 
 export const tool: Tool = {

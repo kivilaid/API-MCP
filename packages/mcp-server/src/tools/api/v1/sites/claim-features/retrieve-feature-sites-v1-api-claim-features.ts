@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   resource: 'api.v1.sites.claim_features',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/api/v1/sites/claim-features/{tenantTag}/{schemaName}/{featureName}',
+  operationId: 'c3e865682325ec1dc78e2b47db01440b',
 };
 
 export const tool: Tool = {

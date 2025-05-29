@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   resource: 'api.v1.sites.products',
   operation: 'write',
   tags: [],
+  httpMethod: 'post',
+  httpPath: '/api/v1/sites/products/{tenantTag}',
+  operationId: 'e2e54aec2faf75675f89ea0060119273',
 };
 
 export const tool: Tool = {

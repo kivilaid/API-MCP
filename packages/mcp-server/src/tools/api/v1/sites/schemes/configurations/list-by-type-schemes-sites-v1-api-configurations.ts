@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   resource: 'api.v1.sites.schemes.configurations',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/api/v1/sites/schemes/configurations/{tenantTag}/{type}',
+  operationId: '06451373fb97a560e85fd9660e0d5e9e',
 };
 
 export const tool: Tool = {
