@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   resource: 'api.v1.sites.claim_features',
   operation: 'write',
   tags: [],
+  httpMethod: 'post',
+  httpPath: '/api/v1/sites/claim-features/{tenantTag}/{schemaName}/{featureName}',
+  operationId: '0219170125a0ee624872dd0f2d673c6b',
 };
 
 export const tool: Tool = {

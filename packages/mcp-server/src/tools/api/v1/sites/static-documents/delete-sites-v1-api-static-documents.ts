@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   resource: 'api.v1.sites.static_documents',
   operation: 'write',
   tags: [],
+  httpMethod: 'delete',
+  httpPath: '/api/v1/sites/static-documents/{tenantTag}/{path}',
+  operationId: 'f136df628b71e0143e16c214a88a4866',
 };
 
 export const tool: Tool = {
