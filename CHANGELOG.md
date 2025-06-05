@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-06-05)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/kivilaid/API-MCP/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Chores
+
+* update SDK settings ([7daabe7](https://github.com/kivilaid/API-MCP/commit/7daabe7bf50353fca8135577cc8860c0f96d2c5d))
+
 ## 0.1.0-alpha.1 (2025-06-05)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/kivilaid/API-MCP/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
