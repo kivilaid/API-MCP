@@ -1,4 +1,4 @@
-configured_endpoints: 36
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/insly%2Fsss-a207dff4be5ac4b5778fcc4647f867cace11979c5af910e57d23eef43cb42f92.yml
-openapi_spec_hash: b5ac1ce8abe7c3202e4899b76d528c01
-config_hash: 056da0f4aef7bbadca9ff5010397976c
+configured_endpoints: 8
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/insly%2Fsss-3f213072459be873bb6fe249e3d2d6de655916b3e2ebd23607fc25d50403feed.yml
+openapi_spec_hash: a2d7c160d7e19ac7d71a618ae54d104f
+config_hash: be333b28562f9a8cfea22737e86505a6

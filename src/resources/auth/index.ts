@@ -8,12 +8,11 @@ export {
   type AuthLoginParams,
   type AuthLogoutParams,
   type AuthRefreshTokenParams,
-} from './auth/auth';
+} from './auth';
 export {
-  Mfa,
-  type MfaSetupResponse,
-  type MfaVerifyResponse,
-  type MfaSetupParams,
-  type MfaVerifyParams,
-} from './mfa';
-export { User, type UserRetrieveProfileResponse } from './user';
+  Password,
+  type PasswordInitiateResetResponse,
+  type PasswordResetResponse,
+  type PasswordInitiateResetParams,
+  type PasswordResetParams,
+} from './password';
