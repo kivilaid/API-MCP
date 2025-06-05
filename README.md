@@ -29,14 +29,10 @@ const client = new SSs({
   apiKey: process.env['SSS_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const response = await client.api.v1.sites.features.retrieveBrokerFeature('REPLACE_ME', {
-    tenantTag: 'REPLACE_ME',
-    featureName: 'REPLACE_ME',
-  });
-}
-
-main();
+const response = await client.api.v1.sites.features.retrieveBrokerFeature('REPLACE_ME', {
+  tenantTag: 'REPLACE_ME',
+  featureName: 'REPLACE_ME',
+});
 ```
 
 ### Request & Response types
@@ -51,15 +47,11 @@ const client = new SSs({
   apiKey: process.env['SSS_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: SSs.API.V1.Sites.FeatureRetrieveBrokerFeatureParams = {
-    tenantTag: 'REPLACE_ME',
-    featureName: 'REPLACE_ME',
-  };
-  const response: unknown = await client.api.v1.sites.features.retrieveBrokerFeature('REPLACE_ME', params);
-}
-
-main();
+const params: SSs.API.V1.Sites.FeatureRetrieveBrokerFeatureParams = {
+  tenantTag: 'REPLACE_ME',
+  featureName: 'REPLACE_ME',
+};
+const response: unknown = await client.api.v1.sites.features.retrieveBrokerFeature('REPLACE_ME', params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -72,21 +64,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const response = await client.api.v1.sites.features
-    .retrieveBrokerFeature('REPLACE_ME', { tenantTag: 'REPLACE_ME', featureName: 'REPLACE_ME' })
-    .catch(async (err) => {
-      if (err instanceof SSs.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const response = await client.api.v1.sites.features
+  .retrieveBrokerFeature('REPLACE_ME', { tenantTag: 'REPLACE_ME', featureName: 'REPLACE_ME' })
+  .catch(async (err) => {
+    if (err instanceof SSs.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
