@@ -8,10 +8,10 @@
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kivilaid/API-MCP.git",
+    "url": "git+https://github.com/kivilaid/remote-mcp-server-authless.git",
     "directory": "packages/mcp-server"
   },
-  "homepage": "https://github.com/kivilaid/API-MCP/tree/main/packages/mcp-server#readme",
+  "homepage": "https://github.com/kivilaid/remote-mcp-server-authless/tree/main/packages/mcp-server#readme",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "private": false,

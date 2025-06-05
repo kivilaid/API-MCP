@@ -9,8 +9,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 Because it's not published yet, clone the repo and build it:
 
 ```sh
-git clone git@github.com:kivilaid/API-MCP.git
-cd API-MCP
+git clone git@github.com:kivilaid/remote-mcp-server-authless.git
+cd remote-mcp-server-authless
 ./scripts/bootstrap
 ./scripts/build
 ```
@@ -40,7 +40,11 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "sss_api": {
       "command": "node",
-      "args": ["/path/to/local/API-MCP/packages/mcp-server", "--client=claude", "--tools=all"],
+      "args": [
+        "/path/to/local/remote-mcp-server-authless/packages/mcp-server",
+        "--client=claude",
+        "--tools=all"
+      ],
       "env": {
         "SSS_BEARER_TOKEN": "My Bearer Token"
       }
