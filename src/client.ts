@@ -20,16 +20,26 @@ import { APIPromise } from './core/api-promise';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
+import { Mfa, MfaSetupParams, MfaSetupResponse, MfaVerifyParams, MfaVerifyResponse } from './resources/mfa';
+import { User, UserRetrieveProfileResponse } from './resources/user';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
-import { API as ApiapiAPI } from './resources/api/api';
+import {
+  Auth,
+  AuthLoginParams,
+  AuthLoginResponse,
+  AuthLogoutParams,
+  AuthLogoutResponse,
+  AuthRefreshTokenParams,
+  AuthRefreshTokenResponse,
+} from './resources/auth/auth';
 
 export interface ClientOptions {
   /**
-   * Authenticate with API key
+   * JWT Authorization header using the Bearer scheme
    */
-  apiKey?: string | undefined;
+  bearerToken?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -102,7 +112,7 @@ export interface ClientOptions {
  * API Client for interfacing with the SSs API.
  */
 export class SSs {
-  apiKey: string;
+  bearerToken: string;
 
   baseURL: string;
   maxRetries: number;
@@ -119,8 +129,8 @@ export class SSs {
   /**
    * API Client for interfacing with the SSs API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['SSS_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['SSS_BASE_URL'] ?? https://api.example.com] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.bearerToken=process.env['SSS_BEARER_TOKEN'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['SSS_BASE_URL'] ?? https://{tenant}.app.{environment}.insly.training/api/v1/identifier] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -130,19 +140,19 @@ export class SSs {
    */
   constructor({
     baseURL = readEnv('SSS_BASE_URL'),
-    apiKey = readEnv('SSS_API_KEY'),
+    bearerToken = readEnv('SSS_BEARER_TOKEN'),
     ...opts
   }: ClientOptions = {}) {
-    if (apiKey === undefined) {
+    if (bearerToken === undefined) {
       throw new Errors.SSsError(
-        "The SSS_API_KEY environment variable is missing or empty; either provide it, or instantiate the SSs client with an apiKey option, like new SSs({ apiKey: 'My API Key' }).",
+        "The SSS_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the SSs client with an bearerToken option, like new SSs({ bearerToken: 'My Bearer Token' }).",
       );
     }
 
     const options: ClientOptions = {
-      apiKey,
+      bearerToken,
       ...opts,
-      baseURL: baseURL || `https://api.example.com`,
+      baseURL: baseURL || `https://{tenant}.app.{environment}.insly.training/api/v1/identifier`,
     };
 
     this.baseURL = options.baseURL!;
@@ -162,7 +172,7 @@ export class SSs {
 
     this._options = options;
 
-    this.apiKey = apiKey;
+    this.bearerToken = bearerToken;
   }
 
   /**
@@ -177,7 +187,7 @@ export class SSs {
       logger: this.logger,
       logLevel: this.logLevel,
       fetchOptions: this.fetchOptions,
-      apiKey: this.apiKey,
+      bearerToken: this.bearerToken,
       ...options,
     });
   }
@@ -191,7 +201,7 @@ export class SSs {
   }
 
   protected authHeaders(opts: FinalRequestOptions): NullableHeaders | undefined {
-    return buildHeaders([{ 'X-API-Key': this.apiKey }]);
+    return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
   }
 
   /**
@@ -691,11 +701,33 @@ export class SSs {
 
   static toFile = Uploads.toFile;
 
-  api: API.API = new API.API(this);
+  auth: API.Auth = new API.Auth(this);
+  mfa: API.Mfa = new API.Mfa(this);
+  user: API.User = new API.User(this);
 }
-SSs.API = ApiapiAPI;
+SSs.Auth = Auth;
+SSs.Mfa = Mfa;
+SSs.User = User;
 export declare namespace SSs {
   export type RequestOptions = Opts.RequestOptions;
 
-  export { ApiapiAPI as API };
+  export {
+    Auth as Auth,
+    type AuthLoginResponse as AuthLoginResponse,
+    type AuthLogoutResponse as AuthLogoutResponse,
+    type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
+    type AuthLoginParams as AuthLoginParams,
+    type AuthLogoutParams as AuthLogoutParams,
+    type AuthRefreshTokenParams as AuthRefreshTokenParams,
+  };
+
+  export {
+    Mfa as Mfa,
+    type MfaSetupResponse as MfaSetupResponse,
+    type MfaVerifyResponse as MfaVerifyResponse,
+    type MfaSetupParams as MfaSetupParams,
+    type MfaVerifyParams as MfaVerifyParams,
+  };
+
+  export { User as User, type UserRetrieveProfileResponse as UserRetrieveProfileResponse };
 }

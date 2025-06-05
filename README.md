@@ -4,7 +4,7 @@
 
 This library provides convenient access to the SSs REST API from server-side TypeScript or JavaScript.
 
-The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [insly.com](https://insly.com). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -26,13 +26,12 @@ The full API of this library can be found in [api.md](api.md).
 import SSs from 'sss';
 
 const client = new SSs({
-  apiKey: process.env['SSS_API_KEY'], // This is the default and can be omitted
+  bearerToken: process.env['SSS_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
-const response = await client.api.v1.sites.features.retrieveBrokerFeature('REPLACE_ME', {
-  tenantTag: 'REPLACE_ME',
-  featureName: 'REPLACE_ME',
-});
+const response = await client.auth.login('REPLACE_ME', { email: 'dev@stainless.com', password: 'password' });
+
+console.log(response.accessToken);
 ```
 
 ### Request & Response types
@@ -44,14 +43,11 @@ This library includes TypeScript definitions for all request params and response
 import SSs from 'sss';
 
 const client = new SSs({
-  apiKey: process.env['SSS_API_KEY'], // This is the default and can be omitted
+  bearerToken: process.env['SSS_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
-const params: SSs.API.V1.Sites.FeatureRetrieveBrokerFeatureParams = {
-  tenantTag: 'REPLACE_ME',
-  featureName: 'REPLACE_ME',
-};
-const response: unknown = await client.api.v1.sites.features.retrieveBrokerFeature('REPLACE_ME', params);
+const params: SSs.AuthLoginParams = { email: 'dev@stainless.com', password: 'password' };
+const response: SSs.AuthLoginResponse = await client.auth.login('REPLACE_ME', params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -64,8 +60,8 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.api.v1.sites.features
-  .retrieveBrokerFeature('REPLACE_ME', { tenantTag: 'REPLACE_ME', featureName: 'REPLACE_ME' })
+const response = await client.auth
+  .login('REPLACE_ME', { email: 'dev@stainless.com', password: 'password' })
   .catch(async (err) => {
     if (err instanceof SSs.APIError) {
       console.log(err.status); // 400
@@ -106,7 +102,7 @@ const client = new SSs({
 });
 
 // Or, configure per-request:
-await client.api.v1.sites.features.retrieveBrokerFeature('REPLACE_ME', { tenantTag: 'REPLACE_ME', featureName: 'REPLACE_ME' }, {
+await client.auth.login('REPLACE_ME', { email: 'dev@stainless.com', password: 'password' }, {
   maxRetries: 5,
 });
 ```
@@ -123,7 +119,7 @@ const client = new SSs({
 });
 
 // Override per-request:
-await client.api.v1.sites.features.retrieveBrokerFeature('REPLACE_ME', { tenantTag: 'REPLACE_ME', featureName: 'REPLACE_ME' }, {
+await client.auth.login('REPLACE_ME', { email: 'dev@stainless.com', password: 'password' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -146,17 +142,17 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new SSs();
 
-const response = await client.api.v1.sites.features
-  .retrieveBrokerFeature('REPLACE_ME', { tenantTag: 'REPLACE_ME', featureName: 'REPLACE_ME' })
+const response = await client.auth
+  .login('REPLACE_ME', { email: 'dev@stainless.com', password: 'password' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.api.v1.sites.features
-  .retrieveBrokerFeature('REPLACE_ME', { tenantTag: 'REPLACE_ME', featureName: 'REPLACE_ME' })
+const { data: response, response: raw } = await client.auth
+  .login('REPLACE_ME', { email: 'dev@stainless.com', password: 'password' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response);
+console.log(response.accessToken);
 ```
 
 ### Logging
